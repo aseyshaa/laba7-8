@@ -1,14 +1,26 @@
+"""Программа для добавления людей в реестр"""
+
+
 class Person:
+    """Родительский класс"""
+
     def __init__(self, name, age, gender):
+        """Инициализация атрибутов класса"""
         self.name = name
         self.age = age
         self.gender = gender
 
-    def get_info(self):
-        print(f"Имя: {self.name}, Возраст: {self.age}, Пол: {self.gender}")
+
+'''получение информации'''
+
+
+def get_info(self):
+    print(f"Имя: {self.name}, Возраст: {self.age}, Пол: {self.gender}")
 
 
 class Student(Person):
+    """считывание имени студента"""
+
     def __init__(self, name, age, gender, student_id, major):
         super().__init__(name, age, gender)
         self.student_id = student_id
@@ -20,6 +32,8 @@ class Student(Person):
 
 
 class Teacher(Person):
+    """считывание имени преподавателя"""
+
     def __init__(self, name, age, gender, teacher_id, department):
         super().__init__(name, age, gender)
         self.teacher_id = teacher_id
@@ -31,6 +45,8 @@ class Teacher(Person):
 
 
 class DepartmentHead(Teacher):
+    '''информация о преподавателе'''
+
     def __init__(self, name, age, gender, teacher_id, department, department_name):
         super().__init__(name, age, gender, teacher_id, department)
         self.department_name = department_name
@@ -38,6 +54,9 @@ class DepartmentHead(Teacher):
     def get_info(self):
         super().get_info()
         print(f"Название кафедры: {self.department_name}")
+
+
+'''функция добавления человека'''
 
 
 def add_person(person_list):
@@ -67,12 +86,18 @@ def add_person(person_list):
     print("Человек успешно добавлен!")
 
 
+'''функция просмотра студентов'''
+
+
 def view_students(person_list):
     print("Студенты:")
     for person in person_list:
         if isinstance(person, Student):
             person.get_info()
             print()
+
+
+'''функция просмотра преподавателей'''
 
 
 def view_teachers(person_list):
@@ -83,12 +108,18 @@ def view_teachers(person_list):
             print()
 
 
+'''функция просмотра зав. кафедр'''
+
+
 def view_department_heads(person_list):
     print("Заведующие кафедрой:")
     for person in person_list:
         if isinstance(person, DepartmentHead):
             person.get_info()
             print()
+
+
+"""Главная функция программы с меню"""
 
 
 def main():
@@ -114,6 +145,7 @@ def main():
             break
         else:
             print("Некорректный выбор!")
+
 
 if __name__ == "__main__":
     main()
