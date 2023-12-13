@@ -92,6 +92,8 @@ def view_department_heads(person_list):
 
 
 def main():
+    person_list = []
+
     while True:
         print("1. Добавить человека")
         print("2. Посмотреть список студентов")
@@ -101,14 +103,14 @@ def main():
         choice = input("Введите ваш выбор: ")
 
         if choice == "1":
-            pass
+            add_person(person_list)
         elif choice == "2":
-            pass
+            view_students(person_list)
         elif choice == "3":
-            pass
+            view_teachers(person_list)
         elif choice == "4":
-            pass
+            view_department_heads(person_list)
         elif choice == "5":
             break
         else:
-            break
+            print("Некорректный выбор!")
