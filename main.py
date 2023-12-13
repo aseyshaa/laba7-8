@@ -38,3 +38,56 @@ class DepartmentHead(Teacher):
     def get_info(self):
         super().get_info()
         print(f"Название кафедры: {self.department_name}")
+
+
+def add_person(person_list):
+    name = input("Введите имя: ")
+    age = input("Введите возраст: ")
+    gender = input("Введите пол: ")
+    choice = input("Выберите роль (1 - Студент, 2 - Преподаватель, 3 - Заведующий кафедрой): ")
+
+    if choice == "1":
+        student_id = input("Введите студенческий ID: ")
+        major = input("Введите специальность: ")
+        person = Student(name, age, gender, student_id, major)
+    elif choice == "2":
+        teacher_id = input("Введите ID преподавателя: ")
+        department = input("Введите кафедру: ")
+        person = Teacher(name, age, gender, teacher_id, department)
+    elif choice == "3":
+        teacher_id = input("Введите ID преподавателя: ")
+        department = input("Введите кафедру: ")
+        department_name = input("Введите название кафедры: ")
+        person = DepartmentHead(name, age, gender, teacher_id, department, department_name)
+    else:
+        print("Некорректный выбор!")
+        return
+
+    person_list.append(person)
+    print("Человек успешно добавлен!")
+
+
+def view_students(person_list):
+    print("Студенты:")
+    for person in person_list:
+        if isinstance(person, Student):
+            person.get_info()
+            print()
+
+
+def view_teachers(person_list):
+    print("Преподаватели:")
+    for person in person_list:
+        if isinstance(person, Teacher):
+            person.get_info()
+            print()
+
+
+def view_department_heads(person_list):
+    print("Заведующие кафедрой:")
+    for person in person_list:
+        if isinstance(person, DepartmentHead):
+            person.get_info()
+            print()
+
+
